@@ -1,0 +1,17 @@
+Figure: time_complexity_analysis
+==================================================
+Description: Computation time complexity analysis for training and testing phases
+==================================================
+
+Values used in the figure:
+------------------------------
+training_time_seconds: 120.49099898338318
+testing_time_seconds: 0.24208402633666992
+total_time_seconds: 120.73308300971985
+training_testing_ratio: 497.7238721889668
+n_train_samples: 770
+n_test_samples: 200
+n_features: 30
+n_epochs: 50
+train_time_per_sample_per_epoch: 0.003129636337230732
+test_time_per_sample: 0.0012104201316833496

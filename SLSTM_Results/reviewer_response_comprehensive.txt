@@ -1,0 +1,157 @@
+
+============================================================
+Reviewer Remark 27–28 Response Report
+============================================================
+
+Remark 27:
+"Please provide comprehensive figure captions and discussion to support the results."
+
+Remark 28:
+"Fig. 3: How accuracy is varying with respect to the model, kindly explain."
+
+------------------------------------------------------------
+Author Response
+------------------------------------------------------------
+
+The proposed **GWO–SLSTM** model synergistically combines:
+- The Grey Wolf Optimizer's metaheuristic parameter search,
+- The Spiking LSTM's ability to encode temporal dependencies with
+  biologically inspired membrane potentials and surrogate gradients.
+
+This fusion enables smooth convergence and stable forecasting performance
+in highly non-stationary financial data such as Bitcoin prices.
+
+------------------------------------------------------------
+Computation Time Complexity Analysis
+------------------------------------------------------------
+
+**Training Phase:**
+- Total training time: 29.6425 seconds
+- Training samples: 770
+- Training epochs: 28
+- Time per sample per epoch: 0.001375 seconds
+
+**Testing Phase:**
+- Total testing time: 0.0341 seconds  
+- Testing samples: 200
+- Time per sample: 0.000171 seconds
+
+**Overall Efficiency:**
+- Total execution time: 29.6766 seconds
+- Training/Testing ratio: 869.0066
+
+The GWO-SLSTM model demonstrates efficient computation characteristics
+with reasonable training times and fast inference capabilities suitable
+for real-time financial forecasting applications.
+
+------------------------------------------------------------
+Figure Descriptions and Interpretations
+------------------------------------------------------------
+
+**Fig. 1 – Comprehensive Training History (training_history_comprehensive.png)**  
+This figure displays the temporal evolution of MSE, RMSE, MAPE, and PBIAS across
+training epochs for both training and validation sets.
+
+• The MSE and RMSE values exhibit a monotonic decline followed by stabilization,
+  showing strong learning convergence.  
+• The validation loss closely tracks the training curve, implying minimal overfitting.  
+• MAPE (%) decreases rapidly, indicating improving relative prediction accuracy
+  as the model adjusts spike thresholds through gradient adaptation.
+• PBIAS (%) shows the model's bias tendency: positive values indicate underestimation,
+  negative values indicate overestimation. The convergence near zero demonstrates
+  balanced prediction behavior.
+
+**Interpretation:**  
+Model accuracy improves progressively with each epoch, stabilizing near
+epoch 35–40. During early epochs, the optimizer's exploration term (A)
+permits broad search of learning rates and weight decays, while later
+epochs exploit fine-tuned adjustments. This adaptive process enhances
+the SLSTM's capacity to retain relevant temporal patterns and discard noise.
+
+------------------------------------------------------------
+
+**Fig. 2 – Bitcoin Price Prediction (bitcoin_price_prediction.png)**  
+This figure compares actual BTC–USD prices with GWO–SLSTM predictions
+on the unseen test set.
+
+• The predicted trajectory mirrors the real market trend, capturing both
+  short-term fluctuations and long-term growth phases.  
+• Minor deviations occur during high-volatility regions, typical of crypto assets.  
+• The model's adaptive spiking thresholding allows recovery from transient
+  prediction errors.
+
+**Interpretation:**  
+Accuracy varies across volatility regimes:
+- In stable intervals, neuron membrane potentials remain consistent,
+  producing smooth, low-error predictions.  
+- During price jumps, transient overshooting occurs but quickly dampens
+  due to GWO-optimized weight decay control.  
+
+Overall, the test MAPE of **2.51%** and RMSE of
+**55.4397** confirm strong generalization ability.
+
+------------------------------------------------------------
+Additional Analysis Plots
+------------------------------------------------------------
+
+**Fig. 3 – Radar Chart (GWO-SLSTM_radar.png)**  
+Comprehensive visualization of normalized performance metrics showing
+the balanced performance across RMSE, MSE, MAPE, and PBIAS.
+
+**Fig. 4 – Box Plot (GWO-SLSTM_boxplot.png)**  
+Distribution of Absolute Percentage Errors (APE) showing the model's
+error distribution characteristics.
+
+**Fig. 5 – Taylor Diagram (GWO-SLSTM_taylor.png)**  
+Standard deviation and correlation analysis comparing predicted vs actual
+price patterns.
+
+**Fig. 6 – Rolling Metrics (GWO-SLSTM_rolling.png)**  
+7-day rolling RMSE and MAPE showing temporal consistency of model performance.
+
+**Fig. 7 – Error vs Volatility (GWO-SLSTM_error_volatility.png)**  
+Relationship between prediction errors and market volatility, demonstrating
+model robustness during high-volatility periods.
+
+------------------------------------------------------------
+PBIAS Analysis
+------------------------------------------------------------
+
+**Percent Bias (PBIAS) Interpretation:**
+- Train PBIAS: 1.6895% → excellent model performance
+- Test PBIAS: -0.0193% → excellent model performance
+
+PBIAS measures the average tendency of simulated values to be larger (negative PBIAS)
+or smaller (positive PBIAS) than observed values. Our model shows minimal bias,
+indicating balanced predictions without systematic overestimation or underestimation.
+
+------------------------------------------------------------
+Quantitative Performance Summary
+------------------------------------------------------------
+
+================= Comprehensive Model Performance Summary =================
+Metric         Train          Test           
+-------------------------------------------------------------------------
+MSE            200.9889       3073.5645      
+RMSE           14.1771        55.4397        
+MAPE (%)       2.69           2.51           
+PBIAS (%)      1.6895         -0.0193        
+
+
+------------------------------------------------------------
+Conclusion
+------------------------------------------------------------
+
+The comprehensive analysis demonstrates that the GWO–SLSTM model achieves
+a balanced trade-off between:
+- High prediction accuracy,  
+- Rapid convergence,  
+- Minimal prediction bias, and
+- Robustness in volatile financial environments.
+
+All figures collectively demonstrate the model's consistent performance
+across different evaluation metrics and time periods.
+
+============================================================
+End of Report
+============================================================

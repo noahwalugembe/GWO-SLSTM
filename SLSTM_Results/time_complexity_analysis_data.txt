@@ -1,0 +1,17 @@
+Figure: time_complexity_analysis
+==================================================
+Description: Computation time complexity analysis for training and testing phases of GWO-SLSTM
+==================================================
+
+Values used in the figure:
+------------------------------
+training_time_seconds: 29.642497777938843
+testing_time_seconds: 0.03411078453063965
+total_time_seconds: 29.676608562469482
+training_testing_ratio: 869.0066260807571
+n_train_samples: 770
+n_test_samples: 200
+n_features: 30
+n_epochs: 28
+train_time_per_sample_per_epoch: 0.0013748839414628406
+test_time_per_sample: 0.00017055392265319825

@@ -1,0 +1,28 @@
+GWO Parameters: 5 wolves, 5 iterations
+Best parameters: LR=0.0173, Decay=0.1776
+Best score: 0.0001
+Train RMSE: 17.275043407524613
+Test RMSE: 76.84235800456383
+Train MSE: 298.4271247318596
+Test MSE: 5904.747983701556
+Train MAPE: 3.107530147866448
+Test MAPE: 3.7052238552490504
+Train PBIAS: 1.5447269457227957
+Test PBIAS: 2.124565015169324
+
+==================================================
+COMPUTATION TIME COMPLEXITY ANALYSIS
+==================================================
+Training Phase Time: 120.4910 seconds
+Testing Phase Time: 0.2421 seconds
+Total Execution Time: 120.7331 seconds
+Training/Testing Ratio: 497.7239
+Training samples: 770
+Testing samples: 200
+Features per sample: 30
+Training epochs: 50
+Training time per sample per epoch: 0.003130 seconds
+Testing time per sample: 0.001210 seconds
+
+Fig. 5: Taylor diagram showing std & correlation comparison.
+Std prediction: 489.72, Std reference: 519.76, Correlation: 0.99

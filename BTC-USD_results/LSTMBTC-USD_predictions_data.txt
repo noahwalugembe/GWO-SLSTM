@@ -1,0 +1,14 @@
+Figure: LSTMBTC-USD_predictions
+==================================================
+Description: Time series comparison of actual vs predicted Bitcoin prices using LSTM model
+==================================================
+
+Values used in the figure:
+------------------------------
+Actual_prices_sample: [741.648987, 735.3820190000001, 732.034973, 735.812988, 735.604004, 745.690979, 756.773987, 777.94397, 771.155029, 773.872009] ... (showing first 10 of 20 values)
+Predicted_prices_sample: [741.6971435546875, 740.6268310546875, 737.6214599609375, 734.1615600585938, 732.7951049804688, 731.9063110351562, 734.80810546875, 741.005126953125, 753.006591796875, 760.0961303710938] ... (showing first 10 of 20 values)
+Time_steps_sample: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] ... (showing first 10 of 20 values)
+Correlation_actual_predicted: 0.9915644573892365
+Mean_actual_price: 1252.882352885
+Mean_predicted_price: 1226.2640380859375
+Total_points: 200

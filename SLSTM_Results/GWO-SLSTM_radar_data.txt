@@ -1,0 +1,15 @@
+Figure: GWO-SLSTM_radar
+==================================================
+Description: Radar chart showing normalized performance metrics (RMSE, MSE, MAPE, PBIAS) for GWO-SLSTM model
+==================================================
+
+Values used in the figure:
+------------------------------
+RMSE: 55.439737130735026
+MSE: 3073.564453125
+MAPE: 2.5069788098335266
+PBIAS: 0.019251384946983308
+Normalized_RMSE: 0.9819623964370203
+Normalized_MSE: 0.0
+Normalized_MAPE: 0.9991843415525955
+Normalized_PBIAS: 0.9999937364629112

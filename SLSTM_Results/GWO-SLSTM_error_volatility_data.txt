@@ -1,0 +1,14 @@
+Figure: GWO-SLSTM_error_volatility
+==================================================
+Description: Scatter plot showing relationship between prediction errors (APE) and market volatility for GWO-SLSTM
+==================================================
+
+Values used in the figure:
+------------------------------
+APE_values_sample: [3.0598859786987305, 0.6324377059936523, 0.6284900903701782, 1.7291202545166016, 1.0590808391571045, 0.8190734386444092, 0.6393880248069763, 0.5360599756240845, 0.5094444155693054, 0.37580662965774536] ... (showing first 10 of 20 values)
+Volatility_values_sample: [1.2749615746237755, 1.2805531002928536, 1.1938688802415993, 1.5932848478864534, 1.5810861379059296, 1.5401958018460264, 1.4691107181750471, 0.9704873894028895, 0.9103388391569783, 0.9351311992419181] ... (showing first 10 of 20 values)
+Correlation_APE_Volatility: 0.488704617886593
+Number_of_points: 193
+Min_volatility: 0.4562770204363463
+Max_volatility: 8.21148076437316
+Mean_volatility: 3.106839861933502

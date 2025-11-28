@@ -1,0 +1,14 @@
+Figure: bitcoin_price_prediction
+==================================================
+Description: Time series comparison of actual vs predicted Bitcoin prices using GWO-SLSTM model
+==================================================
+
+Values used in the figure:
+------------------------------
+Actual_prices_sample: [741.64892578125, 735.3820190429688, 732.0349731445312, 735.8129272460938, 735.60400390625, 745.6909790039062, 756.7739868164062, 777.9439697265625, 771.155029296875, 773.8719482421875] ... (showing first 10 of 20 values)
+Predicted_prices_sample: [737.1141357421875, 738.5179443359375, 732.0501098632812, 728.5970458984375, 732.494873046875, 732.2791748046875, 742.6911010742188, 754.1397705078125, 776.0321044921875, 769.0082397460938] ... (showing first 10 of 20 values)
+Time_steps_sample: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] ... (showing first 10 of 20 values)
+Correlation_actual_predicted: 0.9943120169060048
+Mean_actual_price: 1252.88232421875
+Mean_predicted_price: 1253.12353515625
+Total_points: 200

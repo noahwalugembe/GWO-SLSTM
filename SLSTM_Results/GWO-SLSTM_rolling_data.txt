@@ -1,0 +1,14 @@
+Figure: GWO-SLSTM_rolling
+==================================================
+Description: 7-day rolling RMSE and MAPE metrics showing temporal performance consistency for GWO-SLSTM
+==================================================
+
+Values used in the figure:
+------------------------------
+Rolling_RMSE_series_sample: [8.197023865791026, 12.049979080878497, 12.132399356093673, 12.270878651939517, 12.950764660739209, 13.255177763758136, 12.476294660947891, 11.436580766936938, 7.231767287417733, 7.15019989801285] ... (showing first 10 of 20 values)
+Rolling_MAPE_series_sample: [0.8718237280845642, 1.221600640565157, 1.2510297819972038, 1.3405186124145985, 1.447440404444933, 1.5383570455014706, 1.3984284363687038, 1.2239252217113972, 0.863378681242466, 0.845808070152998] ... (showing first 10 of 20 values)
+Average_Rolling_RMSE: 41.59101266007865
+Average_Rolling_MAPE: 2.5023145495539474
+Max_Rolling_RMSE: 143.81714464468413
+Max_Rolling_MAPE: 7.085026800632477
+Window_size: 7
