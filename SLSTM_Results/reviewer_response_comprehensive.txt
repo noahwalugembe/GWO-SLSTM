@@ -26,19 +26,22 @@ Computation Time Complexity Analysis
 ------------------------------------------------------------
 
 **Training Phase:**
-- Total training time: 29.6425 seconds
+- Total training time: 43.9588 seconds
 - Training samples: 770
 - Training epochs: 28
-- Time per sample per epoch: 0.001375 seconds
+- Time per sample per epoch: 0.002039 seconds
 
 **Testing Phase:**
-- Total testing time: 0.0341 seconds  
+- Total testing time: 0.0455 seconds  
 - Testing samples: 200
-- Time per sample: 0.000171 seconds
+- Time per sample: 0.000227 seconds
 
 **Overall Efficiency:**
-- Total execution time: 29.6766 seconds
-- Training/Testing ratio: 869.0066
+- Total execution time: 44.0043 seconds
+- Training/Testing ratio: 966.9374
+
+**Early Stopping:**
+- Early stopping triggered at epoch: 28
 
 The GWO-SLSTM model demonstrates efficient computation characteristics
 with reasonable training times and fast inference capabilities suitable

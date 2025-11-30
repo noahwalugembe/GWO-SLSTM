@@ -93,7 +93,7 @@ def objective_function(params):
     lr, decay = params
     model = build_lstm()
     model.compile(optimizer='adam', loss='mean_squared_error')
-    history = model.fit(X_train, Y_train, epochs=5, batch_size=16, verbose=0)
+    history = model.fit(X_train, Y_train, epochs=5, batch_size=32, verbose=0)
     mse = history.history['loss'][-1]
     return mse
 
@@ -218,9 +218,9 @@ def calculate_mape(actual, predicted):
     mape = np.mean(np.abs((actual_filtered - predicted_filtered) / actual_filtered)) * 100
     return mape
 
-# -----------------------------
-# COMPREHENSIVE TRAINING WITH METRIC TRACKING (like SLSTM)
-# -----------------------------
+# ==========================================================
+# ADDED: EARLY STOPPING IMPLEMENTATION (EXACTLY LIKE SLSTM)
+# ==========================================================
 
 # Initialize metric tracking - ADD PBIAS (same as SLSTM)
 train_mse_history, train_rmse_history, train_mape_history, train_pbias_history = [], [], [], []
@@ -229,11 +229,32 @@ val_mse_history, val_rmse_history, val_mape_history, val_pbias_history = [], [],
 # Compile model with optimal parameters
 model.compile(optimizer='adam', loss='mean_squared_error')
 
-print("Starting comprehensive training with metric tracking...")
+# EARLY STOPPING VARIABLES (ADDED)
+early_stop = 0
+best_val_loss = float('inf')
+best_model_weights = None
+
+print("Starting comprehensive training with early stopping...")
 for epoch in range(50):
     # Train for one epoch
-    history = model.fit(X_train, Y_train, epochs=1, batch_size=16, verbose=0, 
+    history = model.fit(X_train, Y_train, epochs=1, batch_size=32, verbose=0, 
                        validation_data=(X_test, Y_test))
+    
+    # Get current validation loss for early stopping
+    current_val_loss = history.history['val_loss'][0]
+    
+    # EARLY STOPPING LOGIC (ADDED)
+    if current_val_loss < best_val_loss:
+        best_val_loss = current_val_loss
+        best_model_weights = model.get_weights()  # Save best model weights
+        early_stop = 0  # Reset counter when improvement occurs
+        print(f"Epoch {epoch}: Validation loss improved to {best_val_loss:.6f}")
+    else:
+        early_stop += 1  # Increment counter when no improvement
+        print(f"Epoch {epoch}: No improvement. Early stop counter: {early_stop}/5")
+        if early_stop >= 5:  # Stop if no improvement for 5 consecutive epochs
+            print(f"Early stopping triggered at epoch {epoch}")
+            break
     
     # Get predictions for both train and test sets
     train_pred = model.predict(X_train, verbose=0)
@@ -260,7 +281,12 @@ for epoch in range(50):
     if epoch % 10 == 0:
         print(f"Epoch {epoch}: Train MSE: {train_mse_history[-1]:.4f}, Val MSE: {val_mse_history[-1]:.4f}")
 
-print("Training completed!")
+# LOAD BEST MODEL WEIGHTS (ADDED)
+if best_model_weights is not None:
+    model.set_weights(best_model_weights)
+    print(f"Loaded best model weights with validation loss: {best_val_loss:.6f}")
+
+print("Training completed with early stopping!")
 
 # End timing for training phase
 training_end_time = time.time()
@@ -269,7 +295,7 @@ training_time = training_end_time - training_start_time
 # Start timing for testing phase
 testing_start_time = time.time()
 
-# Final predictions for other plots
+# Final predictions for other plots (using best model)
 train_predictions = model.predict(X_train, verbose=0)
 test_predictions = model.predict(X_test, verbose=0)
 
@@ -308,13 +334,13 @@ print(f"Training/Testing Ratio: {training_time/testing_time:.4f}")
 n_train_samples = X_train.shape[0]
 n_test_samples = X_test.shape[0]
 n_features = X_train.shape[1]
-n_epochs = 50
+n_epochs = len(train_mse_history)  # Actual epochs run (with early stopping)
 
 print(f"\nDataset Characteristics:")
 print(f"Training samples: {n_train_samples}")
 print(f"Testing samples: {n_test_samples}")
 print(f"Features per sample: {n_features}")
-print(f"Training epochs: {n_epochs}")
+print(f"Training epochs: {n_epochs} (with early stopping)")
 
 # Time per sample metrics
 train_time_per_sample = training_time / (n_train_samples * n_epochs)
@@ -335,7 +361,9 @@ time_complexity_data = {
     "n_features": n_features,
     "n_epochs": n_epochs,
     "train_time_per_sample_per_epoch": train_time_per_sample,
-    "test_time_per_sample": test_time_per_sample
+    "test_time_per_sample": test_time_per_sample,
+    "early_stopping_triggered": early_stop >= 5,
+    "best_validation_loss": best_val_loss
 }
 
 # Enhanced plotting with PBIAS - COMPREHENSIVE like SLSTM
@@ -558,6 +586,9 @@ with open(metrics_file, "w") as f:
     f.write(f"Test MAPE: {final_test_mape}\n")
     f.write(f"Train PBIAS: {final_train_pbias}\n")
     f.write(f"Test PBIAS: {final_test_pbias}\n")
+    f.write(f"Early stopping triggered: {early_stop >= 5}\n")
+    f.write(f"Best validation loss: {best_val_loss:.6f}\n")
+    f.write(f"Actual epochs trained: {n_epochs}\n")
     f.write("\n" + "="*50 + "\n")
     f.write("COMPUTATION TIME COMPLEXITY ANALYSIS\n")
     f.write("="*50 + "\n")
@@ -743,7 +774,9 @@ training_history_data = {
     "Validation_PBIAS_values": val_pbias_history,
     "Final_training_MSE": train_mse_history[-1] if train_mse_history else 0,
     "Final_validation_MSE": val_mse_history[-1] if val_mse_history else 0,
-    "Number_of_epochs": len(train_mse_history)
+    "Number_of_epochs": len(train_mse_history),
+    "Early_stopping_triggered": early_stop >= 5,
+    "Best_validation_loss": best_val_loss
 }
 save_figure_data("training_history_comprehensive",
                 "Comprehensive training history showing evolution of MSE, RMSE, MAPE, and PBIAS across epochs",

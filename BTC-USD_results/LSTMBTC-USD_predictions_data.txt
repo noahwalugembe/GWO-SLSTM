@@ -6,9 +6,9 @@ Description: Time series comparison of actual vs predicted Bitcoin prices using 
 Values used in the figure:
 ------------------------------
 Actual_prices_sample: [741.648987, 735.3820190000001, 732.034973, 735.812988, 735.604004, 745.690979, 756.773987, 777.94397, 771.155029, 773.872009] ... (showing first 10 of 20 values)
-Predicted_prices_sample: [741.6971435546875, 740.6268310546875, 737.6214599609375, 734.1615600585938, 732.7951049804688, 731.9063110351562, 734.80810546875, 741.005126953125, 753.006591796875, 760.0961303710938] ... (showing first 10 of 20 values)
+Predicted_prices_sample: [761.5611572265625, 763.654296875, 765.1731567382812, 766.2479858398438, 767.1207275390625, 767.8497924804688, 768.9313354492188, 770.4406127929688, 773.0925903320312, 775.9788818359375] ... (showing first 10 of 20 values)
 Time_steps_sample: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] ... (showing first 10 of 20 values)
-Correlation_actual_predicted: 0.9915644573892365
+Correlation_actual_predicted: 0.9796293481911212
 Mean_actual_price: 1252.882352885
-Mean_predicted_price: 1226.2640380859375
+Mean_predicted_price: 1255.4508056640625
 Total_points: 200

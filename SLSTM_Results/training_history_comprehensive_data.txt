@@ -16,3 +16,4 @@ Validation_PBIAS_values: [57.867878675460815, 48.57451021671295, 34.664583206176
 Final_training_MSE: 160.50119018554688
 Final_validation_MSE: 3599.47314453125
 Number_of_epochs: 28
+Early_stopping_epoch: 28

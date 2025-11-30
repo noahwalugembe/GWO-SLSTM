@@ -1,0 +1,7 @@
+
+\subsection{Data Collection and Preprocessing}
+\label{sec:data_collection}
+
+This study utilizes daily closing prices of Bitcoin (BTC-USD) obtained from the Yahoo Finance repository covering the period from September 17, 2014 to June 12, 2017. The dataset comprises exactly 1,000 consecutive trading days, capturing multiple market regimes including significant price appreciation from \$457 to \$2660. This 3-year period provides a comprehensive testing environment while maintaining manageable computational requirements.
+
+Due to Bitcoin's 24/7 trading nature, the dataset contains consecutive daily observations without gaps. All prices were normalized to the interval $[0, 1]$ via Min–Max scaling before model training. A strictly chronological split was employed to avoid information leakage: 80\% of the data (800 observations from 2014-09-17 to 2016-11-24) were allocated for model training and validation, and 20\% (200 observations from 2016-11-25 to 2017-06-12) were reserved for final testing.

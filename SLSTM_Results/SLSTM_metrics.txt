@@ -13,13 +13,14 @@ Test PBIAS: -0.0193%
 ==================================================
 COMPUTATION TIME COMPLEXITY ANALYSIS
 ==================================================
-Training Phase Time: 29.6425 seconds
-Testing Phase Time: 0.0341 seconds
-Total Execution Time: 29.6766 seconds
-Training/Testing Ratio: 869.0066
+Training Phase Time: 43.9588 seconds
+Testing Phase Time: 0.0455 seconds
+Total Execution Time: 44.0043 seconds
+Training/Testing Ratio: 966.9374
 Training samples: 770
 Testing samples: 200
 Features per sample: 30
 Training epochs: 28
-Training time per sample per epoch: 0.001375 seconds
-Testing time per sample: 0.000171 seconds
+Training time per sample per epoch: 0.002039 seconds
+Testing time per sample: 0.000227 seconds
+Early stopping triggered at epoch: 28

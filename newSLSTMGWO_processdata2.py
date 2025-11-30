@@ -437,6 +437,9 @@ if __name__ == "__main__":
     criterion = torch.nn.MSELoss()
     early_stop = 0
     best_val_loss = float('inf')
+    
+    # ADDED: Variable to track early stopping
+    early_stop_epoch = None
 
     for epoch in tqdm(range(50), desc="Final Training"):
         final_model.train()
@@ -487,6 +490,8 @@ if __name__ == "__main__":
         else:
             early_stop += 1
             if early_stop >= 5:
+                early_stop_epoch = epoch  # ADDED: Record the epoch when early stopping is triggered
+                print(f"\nEarly stopping triggered at epoch {epoch + 1}")  # ADDED: Print early stopping notification
                 break
 
     # Load best model
@@ -519,6 +524,12 @@ if __name__ == "__main__":
     print(f"Testing Phase Time: {testing_time:.4f} seconds")
     print(f"Total Execution Time: {training_time + testing_time:.4f} seconds")
     print(f"Training/Testing Ratio: {training_time/testing_time:.4f}")
+    
+    # ADDED: Print early stopping status
+    if early_stop_epoch is not None:
+        print(f"Early stopping triggered at epoch: {early_stop_epoch + 1}")
+    else:
+        print("Training completed all 50 epochs (no early stopping)")
 
     # Calculate time complexity metrics
     n_train_samples = X_train.shape[0]
@@ -551,7 +562,8 @@ if __name__ == "__main__":
         "n_features": n_features,
         "n_epochs": n_epochs,
         "train_time_per_sample_per_epoch": train_time_per_sample,
-        "test_time_per_sample": test_time_per_sample
+        "test_time_per_sample": test_time_per_sample,
+        "early_stopping_epoch": early_stop_epoch + 1 if early_stop_epoch is not None else "No early stopping"  # ADDED
     }
 
     # Print metrics
@@ -725,6 +737,11 @@ if __name__ == "__main__":
         f.write(f"Training epochs: {n_epochs}\n")
         f.write(f"Training time per sample per epoch: {train_time_per_sample:.6f} seconds\n")
         f.write(f"Testing time per sample: {test_time_per_sample:.6f} seconds\n")
+        # ADDED: Early stopping information
+        if early_stop_epoch is not None:
+            f.write(f"Early stopping triggered at epoch: {early_stop_epoch + 1}\n")
+        else:
+            f.write("Training completed all 50 epochs (no early stopping)\n")
 
     # ==========================================================
     # ENHANCED: SAVE FIGURE DATA FOR ALL PLOTS (ADDED FROM FIRST CODE)
@@ -831,7 +848,8 @@ if __name__ == "__main__":
         "Validation_PBIAS_values": val_pbias,
         "Final_training_MSE": train_mse[-1] if train_mse else 0,
         "Final_validation_MSE": val_mse[-1] if val_mse else 0,
-        "Number_of_epochs": len(train_mse)
+        "Number_of_epochs": len(train_mse),
+        "Early_stopping_epoch": early_stop_epoch + 1 if early_stop_epoch is not None else "No early stopping"  # ADDED
     }
     save_figure_data("training_history_comprehensive",
                     "Comprehensive training history showing evolution of MSE, RMSE, MAPE, and PBIAS across epochs for GWO-SLSTM",
@@ -927,6 +945,9 @@ Computation Time Complexity Analysis
 **Overall Efficiency:**
 - Total execution time: {training_time + testing_time:.4f} seconds
 - Training/Testing ratio: {training_time/testing_time:.4f}
+
+**Early Stopping:**
+- {"Early stopping triggered at epoch: " + str(early_stop_epoch + 1) if early_stop_epoch is not None else "Training completed all 50 epochs (no early stopping)"}
 
 The GWO-SLSTM model demonstrates efficient computation characteristics
 with reasonable training times and fast inference capabilities suitable
@@ -1056,3 +1077,4 @@ End of Report
     print(f"   - All figure data files (*_data.txt)")
     print(f"\n✅ PBIAS metrics: Train={metrics['Train PBIAS']:.4f}%, Test={metrics['Test PBIAS']:.4f}%")
     print(f"\n✅ Time Complexity: Training={training_time:.2f}s, Testing={testing_time:.2f}s")
+    print(f"\n✅ Early Stopping: {'Triggered at epoch ' + str(early_stop_epoch + 1) if early_stop_epoch is not None else 'Not triggered (completed all epochs)'}")
