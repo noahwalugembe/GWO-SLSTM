@@ -47,9 +47,9 @@ def save_figure_data(figure_name, description, data_dict, results_dir):
             else:
                 f.write(f"{key}: {value}\n")
 
-# Load the dataset
-dataset = pd.read_csv('TSF-BTC-LSTM-RNN-PSO-GWO-main/BTC-USD.csv')
-dataset = dataset[:1000]  # Reduce dataset to 1000 values
+# Load the dataset btcusd_2014_2026.csv
+dataset = pd.read_csv('btcusd_2014_2026.csv')
+dataset = dataset[:4170]  # Reduce dataset to 1000 values
 
 # Preprocessing
 scaler = MinMaxScaler(feature_range=(0, 1))
@@ -79,20 +79,21 @@ X_test, Y_test = create_dataset(test_data, time_steps)
 X_train = np.reshape(X_train, (X_train.shape[0], X_train.shape[1], 1))
 X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
 
-# Define the LSTM model
-def build_lstm():
+# Define the LSTM model (now accepts lr and decay)
+def build_lstm(lr=0.001, decay=0.0):
     model = Sequential()
     model.add(LSTM(units=32, input_shape=(X_train.shape[1], 1)))
     model.add(Dense(1))
+    # Compile inside the function with given lr and decay
+    optimizer = tf.keras.optimizers.Adam(learning_rate=lr, decay=decay)
+    model.compile(optimizer=optimizer, loss='mean_squared_error')
     return model
 
-model = build_lstm()
-
-# Define the objective function for GWO
+# Define the objective function for GWO (now uses lr and decay)
 def objective_function(params):
     lr, decay = params
-    model = build_lstm()
-    model.compile(optimizer='adam', loss='mean_squared_error')
+    model = build_lstm(lr=lr, decay=decay)   # <-- FIXED: pass parameters
+    # model is already compiled inside build_lstm, so no separate compile needed
     history = model.fit(X_train, Y_train, epochs=5, batch_size=32, verbose=0)
     mse = history.history['loss'][-1]
     return mse
@@ -174,7 +175,7 @@ print(f"Best parameters found: LR={alpha_pos[0]:.4f}, Decay={alpha_pos[1]:.4f}")
 print(f"Best score: {alpha_score:.4f}")
 
 # Create results directory
-results_dir = "BTC-USD_results"
+results_dir = "LSTMGWO_Results"
 os.makedirs(results_dir, exist_ok=True)
 
 # -----------------------------
@@ -226,8 +227,8 @@ def calculate_mape(actual, predicted):
 train_mse_history, train_rmse_history, train_mape_history, train_pbias_history = [], [], [], []
 val_mse_history, val_rmse_history, val_mape_history, val_pbias_history = [], [], [], []
 
-# Compile model with optimal parameters
-model.compile(optimizer='adam', loss='mean_squared_error')
+# Build the final model using the best GWO parameters
+model = build_lstm(lr=alpha_pos[0], decay=alpha_pos[1])   # <-- FIXED: use best lr and decay
 
 # EARLY STOPPING VARIABLES (ADDED)
 early_stop = 0
