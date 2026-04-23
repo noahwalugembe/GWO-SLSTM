@@ -1,0 +1,4 @@
+Window,Train_Start,Train_End,Test_Start,Test_End,Dominant_Character,Mean_Return,Std_Return
+R1,2014-09-17,2021-05-06,2021-05-07,2023-07-23,High-volatility correction / bear transition,-0.00021009795134673445,0.03357978692866191
+R2,2015-10-26,2022-06-14,2022-06-15,2024-08-30,Recovery and early expansion phase,0.001573307424958473,0.026923649221512944
+R3,2016-05-15,2023-01-02,2023-01-03,2025-03-20,Sustained expansion (bull market),0.0023364523059996156,0.025910977629387554

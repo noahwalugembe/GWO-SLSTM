@@ -1,0 +1,15 @@
+Figure: LSTMBTC-USD_radar
+==================================================
+Description: Radar chart showing normalized performance metrics (RMSE, MSE, MAPE, PBIAS) for LSTM model
+==================================================
+
+Values used in the figure:
+------------------------------
+RMSE: 4030.097355827562
+MSE: 16241684.697448306
+MAPE: 4.397449330997513
+PBIAS: 0.03424984955814757
+Normalized_RMSE: 0.9997518670365235
+Normalized_MSE: 0.0
+Normalized_MAPE: 0.9999997292491873
+Normalized_PBIAS: 0.9999999978912378

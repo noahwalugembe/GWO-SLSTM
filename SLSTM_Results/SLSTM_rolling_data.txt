@@ -1,0 +1,14 @@
+Figure: SLSTM_rolling
+==================================================
+Description: 7-day rolling RMSE and MAPE metrics showing temporal performance consistency for SLSTM
+==================================================
+
+Values used in the figure:
+------------------------------
+Rolling_RMSE_series_sample: [484.6682982979184, 543.7559769786443, 690.8050783325207, 705.7197788428492, 736.1370032133964, 739.4869420753824, 733.6625160794301, 739.3606613148958, 771.5196854261076, 847.5598430199486] ... (showing first 10 of 20 values)
+Rolling_MAPE_series_sample: [1.461788546293974, 1.7726194113492966, 2.2215360775589943, 2.291126176714897, 2.431933395564556, 2.448430098593235, 2.4297917261719704, 2.4538949131965637, 2.563444897532463, 2.719503827393055] ... (showing first 10 of 20 values)
+Average_Rolling_RMSE: 2975.790398128514
+Average_Rolling_MAPE: 3.8620297451552346
+Max_Rolling_RMSE: 9781.519309391562
+Max_Rolling_MAPE: 12.86194771528244
+Window_size: 7

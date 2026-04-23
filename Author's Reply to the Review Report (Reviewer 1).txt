@@ -1,0 +1,147 @@
+
+============================================================================
+Main remarks
+
+1
+The empirical evidence is too limited, and the data selection is not sufficiently justified for the strength of the claims.
+The study is based on a single univariate BTC–USD closing-price series of 1,000 daily observations, covering the period from September 17, 2014 to June 12, 2017. While the manuscript states that this interval includes multiple market regimes and frames the study as a methodological proof of concept, this remains a very narrow empirical basis for drawing broader conclusions about non-stationary cryptocurrency forecasting. In particular, the choice of the 2014–2017 period is not sufficiently justified. This corresponds to a relatively early stage of Bitcoin market development, before the more mature and structurally different market conditions seen in the last several years. If the paper aims to claim robustness under regime shifts and non-stationarity, it would be important either to explain much more clearly why this older period was selected or to extend the evaluation to more recent years.
+Moreover, although the manuscript includes rolling-origin evaluation, the robustness analysis is still limited in scope, and the main discussion remains centered on one primary hold-out setting. The empirical validation would be more convincing if it explicitly included more diverse forward test windows, including a window dominated by a sustained downward market phase rather than relying mainly on the present setup.
+
+Response to Reviewer
+
+We thank the reviewer for this insightful comment regarding the limited empirical scope and the justification of the data selection.
+
+In response, we have significantly extended the dataset to address these concerns. Specifically, the study now uses the BTC–USD daily closing price series spanning from September 17, 2014 to October 9, 2025, resulting in a total of 4,039 observations. This extended period substantially broadens the empirical basis of the study and includes multiple distinct market regimes, such as early market formation, the 2017 bull run, the 2018–2019 bear market, the 2020–2021 expansion phase, and the more recent volatile and correction periods. As a result, the dataset now better reflects the evolving and non-stationary nature of cryptocurrency markets.
+
+This revision directly addresses the concern that the earlier version relied on a relatively immature phase of the market. By incorporating more recent data, the analysis now captures structurally different conditions, including increased market participation, institutional involvement, and changing volatility dynamics. We have clarified this motivation in the revised manuscript to better justify the data selection.
+
+
+===================================================================================
+
+2
+The comparative study is too weak to isolate where the reported gains actually come from.
+
+The main comparison is only between GWO-LSTM and GWO-SLSTM. There is no plain LSTM without GWO, no SLSTM without GWO, and no stronger contemporary forecasting baselines. As a result, it is difficult to disentangle whether the reported improvement comes from the spiking recurrence, the optimization setup, implementation details, or simply from the selected training configuration.
+
+
+Response to Reviewer
+
+We thank the reviewer for highlighting the limitations of the original comparative setup and the difficulty in attributing the source of the reported performance gains.
+
+In response, we have expanded the experimental design to explicitly disentangle the contributions of the model architecture and the optimization strategy. Specifically, we have now included the following additional baselines:
+
+Plain LSTM (without GWO)
+Plain SLSTM (without GWO)
+
+These additions allow for a more systematic comparison across four configurations:
+
+LSTM (baseline)
+SLSTM (architecture effect)
+GWO-LSTM (optimization effect)
+GWO-SLSTM (combined effect)
+
+This revised setup enables us to isolate:
+
+The impact of the spiking recurrent mechanism (by comparing LSTM vs. SLSTM),
+The contribution of the Grey Wolf Optimizer (GWO) (by comparing models with and without GWO),
+And the potential interaction effect between architecture and optimization (GWO-SLSTM vs. others).
+
+Furthermore, we have ensured that all models are trained under consistent experimental conditions (data splits, preprocessing, and evaluation metrics) to avoid confounding effects arising from implementation or training differences.
+
+The results and corresponding discussion have been updated accordingly in the revised manuscript, providing a clearer and more rigorous attribution of performance improvements.
+
+Overall, these additions significantly strengthen the comparative analysis and improve the interpretability of the reported gains.
+
+==================================================================================
+3
+The literature review should be strengthened with a structured comparative table, not only narrative discussion.
+
+Although Section 2 cites a broad range of studies, it does not provide a clear comparative overview of the most relevant methods and their characteristics. This weakens the positioning of the proposed method and makes the claimed gap less convincing than it could be. A summary table comparing prior models by architecture, optimization method, data regime, forecasting setting, strengths, and drawbacks would greatly improve readability and would allow the novelty of GWO-SLSTM to be assessed more rigorously.
+
+
+
+==================================================================================
+4
+
+The architectural novelty and the actual role of “spiking” remain insufficiently clarified.
+
+The manuscript presents the model as event-driven and spike-based, but the recurrence is still largely expressed through analog synaptic and membrane states, with the thresholded spike operation not clearly shown to drive the forecasting behavior in a strong or uniquely necessary way. Relatedly, the text states that the membrane can be reset after firing, while Table 2 lists the reset mechanism as “none,” which creates confusion about what exact forward dynamics were actually used in the reported experiments.
+
+Response to Reviewer
+
+
+Yes in spiking neural network membrane can be reset after firing and this practically good for classification and event detection where the membrane potential is set to 0 immediately after spiking. This completely erases the neuron’s immediate pre-spike state, promoting 
+temporal sparsity and preventing runaway excitation. While biologically plausible and computationally efficient, hard reset discards potentially useful subthreshold information which may hinder learning in tasks requiring fine-grained temporal memory, such as capturing gradual price drift in cryptocurrency markets.  
+
+In this project  no reset mechanism applied, allowing the membrane potential to continue accumulating without interruption after spikes, which enables the neuron to maintain its state across time steps. This preserves long-term historical information, making it particularly suitable for financial time series where past price movements exert prolonged influence on future trends. However, it risks unbounded potential growth if not balanced by adaptive threshold mechanisms which is not the case. In this project we Applied balanced by adaptive threshold mechanisms.
+
+
+
+
+==================================================================================
+5
+The reported computational-efficiency advantage should be interpreted much more cautiously.
+
+The manuscript reports a substantial runtime advantage for GWO-SLSTM, but this comparison is not isolated cleanly enough to support a general architectural conclusion. The two models were implemented in different frameworks, TensorFlow/Keras for GWO-LSTM and PyTorch/snnTorch for GWO-SLSTM, and they also stopped after different numbers of epochs. Under such conditions, the reported wall-clock difference should be interpreted as setup-specific rather than as evidence that the proposed architecture is intrinsically more efficient.
+
+
+Response to Reviewer
+
+We added the clarification below to the paper
+
+Given these confounding factors, the observed speed advantage of GWO-SLSTM over 
+GWO-LSTM (39.71 s vs. 137.28 s) should not be interpreted as evidence that the spiking 
+architecture is intrinsically more computationally efficient than conventional LSTM. Rather, 
+these measurements reflect the specific implementation choices, framework characteristics, 
+and optimization trajectories used in this study. The key practical finding is that within 
+our implemented environment, GWO-SLSTM achieves superior predictive accuracy while 
+incurring a moderate and practically acceptable training cost (under 40 seconds). 
+
+
+
+==================================================================================
+6
+There are notable presentation, consistency, and focus issues.
+
+Figure 1 does not appear fully aligned with the reported experimental setup. The main text describes a univariate setting with GWO tuning only learning rate and weight decay, fixed batch size, and evaluation based on MSE/RMSE/MAPE/PBIAS, whereas the figure suggests a broader pipeline with optional exogenous variables, different optimization targets, and additional metrics. In addition, the manuscript includes substantial theoretical extension material in the appendices that was not part of the executed experimental pipeline.
+
+Response to Reviewer
+
+We removed the substantial theoretical extension material in the appendices that was not part of the executed experimental pipeline.
+
+
+
+
+
+==================================================================================
+7
+
+The statistical validation is a useful step, but the robustness evidence remains limited in scope.
+
+The manuscript goes beyond a single-seed comparison by reporting paired t-tests and bootstrap confidence intervals over 10 independent runs, which is a positive aspect. However, these repeated-run results are still obtained within a very narrow empirical setting: a single univariate BTC–USD series and one main forecasting setup. In addition, although the rolling-origin evaluation is said to preserve the same qualitative ranking between models, those results are not developed in the main paper with the same level of detail as the primary hold-out experiment.
+
+Response to Reviewer
+
+We thank the reviewer for acknowledging the use of repeated-run statistical validation and for raising important concerns regarding the scope of the robustness analysis.
+
+In response, we have substantially strengthened the empirical evaluation along two key dimensions: data scope and evaluation depth.
+
+First, the dataset has been significantly expanded from the original 1,000 observations to a BTC–USD daily series covering September 17, 2014 to October 9, 2025 (4,039 observations). This extended horizon includes multiple distinct market regimes—early market formation, major bull and bear cycles, and more recent high-volatility periods—thereby providing a much broader and more realistic non-stationary environment. As a result, the repeated-run statistical analysis (paired t-tests and bootstrap confidence intervals over 10 independent runs) is now conducted over a substantially richer and more heterogeneous dataset, improving the reliability of the reported conclusions.
+
+Second, we have enhanced the rolling-origin evaluation to address the reviewer’s concern about limited development in the original manuscript. In the revised version, rolling-origin results are presented with the same level of detail as the primary hold-out experiment, including:
+
+Explicit reporting of performance metrics across multiple forecast origins,
+Comparative analysis of model rankings across different temporal segments,
+Additional discussion highlighting consistency (or variation) in model behavior under different market conditions.
+
+Importantly, the expanded rolling-origin analysis confirms that the qualitative ranking of models is preserved across diverse forward windows, including periods characterized by sustained downward trends and heightened volatility. This provides stronger evidence that the observed performance differences are not artifacts of a single split but persist across varying temporal contexts.
+
+While the study remains focused on a univariate BTC–USD setting as a controlled testbed for methodological evaluation, the substantially extended dataset and the more comprehensive treatment of rolling-origin evaluation significantly improve the robustness and generalizability of the findings.
+======================================================================
+
+
+
+
+
+
+

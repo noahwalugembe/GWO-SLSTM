@@ -1,0 +1,14 @@
+Figure: LSTMBTC-USD_error_volatility
+==================================================
+Description: Scatter plot showing relationship between prediction errors (APE) and market volatility
+==================================================
+
+Values used in the figure:
+------------------------------
+APE_values_sample: [3.271983073216712, 1.462276994493131, 4.258156176491027, 3.3664750313793212, 3.401613659777334, 3.1555790329261617, 2.988224830009463, 2.4908945039979518, 0.8376415243143982, 3.092666011891242] ... (showing first 10 of 20 values)
+Volatility_values_sample: [0.34468894464194255, 0.667638384332831, 0.9894157042673867, 0.9748989809080499, 0.9660817855784634, 0.9602156067340765, 0.9597675549111994, 0.9843512738389916, 1.117566464991501, 0.8734044218582768] ... (showing first 10 of 20 values)
+Correlation_APE_Volatility: 0.19034224203205305
+Number_of_points: 801
+Min_volatility: 0.34468894464194255
+Max_volatility: 6.686898942007527
+Mean_volatility: 2.2421140171823795

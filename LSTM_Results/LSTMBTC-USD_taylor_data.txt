@@ -1,0 +1,11 @@
+Figure: LSTMBTC-USD_taylor
+==================================================
+Description: Taylor diagram comparing standard deviation and correlation between actual and predicted prices
+==================================================
+
+Values used in the figure:
+------------------------------
+Reference_std: 28509.206081103057
+Prediction_std: 28153.6953125
+Correlation: 0.9899614417365817
+RMS_difference: 4030.0216760498506

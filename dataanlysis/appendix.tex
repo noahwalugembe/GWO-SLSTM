@@ -1,0 +1,87 @@
+\section{Descriptive Statistics, Rolling-Origin Evaluation, and Regime Distribution}
+Please note that upon acceptance, the appendices will be relocated to the Supplementary Material to comply with the journal's length requirements.
+
+\subsection{Descriptive Statistics and Diagnostics}
+\label{sec:descriptive_statistics}
+
+Table~A1 shows the descriptive statistics and diagnostic test results (Augmented Dickey--Fuller (ADF) and Ljung--Box) for the training and testing subsets of daily Bitcoin closing prices (BTC--USD) spanning from September 2014 to October 2025. The results indicate strong non-stationarity and significant serial dependence, which justifies the use of adaptive temporal models.
+
+\begin{table}[H]
+\centering
+\caption{Table~A1. Descriptive Statistics, ADF and Ljung--Box Tests for Daily BTC--USD Closing Prices (September 2014--October 2025).}
+\label{tab:descriptive_stats_vertical_appendix}
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Statistic} & \textbf{Train (80\%)} & \textbf{Test (20\%)} \\
+\midrule
+Mean              & 13692.55   & 72108.64  \\
+Std               & 16015.91   & 28526.86   \\
+Min               & 178.10   & 25162.65  \\
+Max               & 67566.83   & 124752.53  \\
+Skew              & 1.38     & 0.02     \\
+Kurtosis          & 0.94    & -1.17    \\
+ADF statistic     & -1.54     & -0.53     \\
+ADF $p$-value     & 0.51     & 0.89     \\
+Ljung--Box stat   & 31867.38  & 7711.74  \\
+Ljung--Box $p$-value & 0.00 & 0.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Market Regime Distribution}
+\label{sec:regime_distribution}
+
+Figure~A1 displays the distribution of market regimes (bull, bear, and neutral) based on daily returns, which categorize market states into bull ($R_t>1\%$), bear ($R_t<-1\%$), and neutral otherwise. This distribution demonstrates balanced coverage of market conditions with 1345 bull days (33.3\%), 1577 neutral days (39.0\%), and 1118 bear days (27.7\%).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{Pictures2/Regime_Distribution.png}
+\caption{Figure~A1. Bitcoin market regime distribution (Bull, Bear, Neutral) based on daily returns (4040-day period, September 2014–October 2025). The distribution shows balanced representation across market conditions with 1345 Bull days (33.3\%), 1577 Neutral days (39.0\%), and 1118 Bear days (27.7\%).}
+\label{fig:regime_distribution_appendix}
+\end{figure}
+
+\subsection{Rolling-Origin Evaluation}
+\label{sec:rolling_origin}
+
+The rolling-origin evaluation protocol, detailed in Table~A2, was used for model training and testing. Each training window covered approximately 60\% of the historical data, while the test window covered the subsequent 20\%. This approach was designed to prevent data leakage by ensuring that test sets only contained data that would be available at the time of prediction. The three windows shown correspond to the representative market conditions identified in the robustness analysis: R1 (high‑volatility correction / bear transition), R2 (recovery and early expansion phase), and R3 (sustained expansion – bull market).
+
+\begin{table}[H]
+\centering
+\caption{Rolling-origin windows and dominant market characteristics used in the robustness analysis.}
+\label{tab:rolling_origin_appendix}
+\begin{tabular}{l l l l}
+\toprule
+\textbf{Window} & \textbf{Training period} & \textbf{Forward-test period} & \textbf{Dominant market character} \\
+\midrule
+R1 & 2014-09-17 -- 2021-05-06 & 2021-05-07 -- 2023-07-23 & High-volatility correction / bear transition \\
+R2 & 2015-10-26 -- 2022-06-14 & 2022-06-15 -- 2024-08-30 & Recovery and early expansion phase \\
+R3 & 2016-05-15 -- 2023-01-02 & 2023-01-03 -- 2025-03-20 & Sustained expansion (bull market) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Rolling-Origin Timeline Visualization}
+\label{sec:rolling_origin_timeline}
+
+Figure~A3 presents a Gantt-style timeline of the training and forward-test periods for the three representative rolling-origin windows (R1, R2, R3). The blue bars indicate the training period (approximately 60\% of historical data), while the salmon bars show the forward-test period (the subsequent 20\%). The dominant market character for each test window is annotated alongside the bar. This visualisation complements Table~A2 by illustrating the temporal placement and relative lengths of the windows used in the robustness analysis.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Pictures2/rolling_windows_timeline.png}
+\caption{Figure~A3. Timeline of training and forward-test periods for the three representative rolling-origin windows (R1, R2, R3). Blue bars represent training periods; salmon bars represent test periods. The dominant market character of each test window is shown on the right.}
+\label{fig:rolling_windows_timeline_appendix}
+\end{figure}
+
+\subsection{Rolling-Origin Trend Visualization}
+\label{sec:rolling_origin_trend}
+
+Figure~A4 shows the temporal evolution of rolling-origin evaluation for test-window mean and standard deviation, illustrating the model's performance and stability across time.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Pictures2/Rolling_Origin_Trend.png}
+\caption{Figure~A4. Rolling-origin evaluation of test-window mean and standard deviation across time (4040-day period, September 2014–October 2025; All images and figures created by the author of this paper).}
+\label{fig:rolling_origin_trend_appendix}
+\end{figure}

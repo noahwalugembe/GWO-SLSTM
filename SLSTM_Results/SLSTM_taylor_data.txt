@@ -1,0 +1,11 @@
+Figure: SLSTM_taylor
+==================================================
+Description: Taylor diagram comparing standard deviation and correlation between actual and predicted prices for SLSTM
+==================================================
+
+Values used in the figure:
+------------------------------
+Reference_std: 28509.20703125
+Prediction_std: 27763.310546875
+Correlation: 0.993028926446679
+RMS_difference: 3404.6600387072895

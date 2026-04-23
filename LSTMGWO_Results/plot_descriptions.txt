@@ -1,0 +1,40 @@
+DATA SUMMARY AND PLOT CAPTIONS
+============================================================
+
+DATA SUMMARY:
+Total dataset size: 4040 samples (scaled)
+Training size: 3232 samples
+Test size: 808 samples
+Time steps for sequences: 30
+Batch size: 32
+Input shape: torch.Size([3202, 30, 1])
+Output shape: torch.Size([3202, 1])
+Scaler: MinMaxScaler with range (0,1)
+
+HYPERPARAMETERS (GWO-OPTIMIZED):
+Learning rate: 0.009922
+Weight decay: 0.000851
+Hidden size: 80 (from BitcoinPredictor default)
+
+PERFORMANCE METRICS:
+Train RMSE: 926.755530
+Test RMSE: 1860.238896
+Train MSE: 858875.812500
+Test MSE: 3460488.750000
+Train MAPE: 48.493004
+Test MAPE: 1.820877
+Train PBIAS: 3.223076
+Test PBIAS: 0.647229
+Training time: 39.6788 s
+Testing time: 0.0300 s
+Epochs trained: 20
+
+PLOT CAPTIONS:
+1. gwo_convergence.png: Convergence curve of the Grey Wolf Optimizer, showing best validation loss (MSE) over iterations.
+2. gwo_training_history.png: Evolution of MSE, RMSE, MAPE, and PBIAS during final training with GWO-optimized hyperparameters.
+3. prediction_comparison.png: Bitcoin price prediction vs actual on test set using GWO-optimized SLSTM.
+4. gwo_radar.png: Radar chart normalizing test metrics (RMSE, MSE, MAPE, PBIAS) for the GWO-optimized model.
+5. gwo_boxplot.png: Boxplot of absolute percentage errors (APE) distribution for the GWO-optimized model.
+6. gwo_taylor.png: Taylor diagram showing correlation and standard deviation of predictions relative to reference.
+7. gwo_rolling.png: Rolling 7-day RMSE and MAPE metrics over the test period for GWO-optimized model.
+8. gwo_error_volatility.png: Scatter plot of prediction APE vs realized volatility (7-day rolling std of returns).

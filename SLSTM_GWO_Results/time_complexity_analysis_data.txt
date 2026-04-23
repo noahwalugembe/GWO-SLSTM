@@ -1,0 +1,23 @@
+Figure: time_complexity_analysis
+==================================================
+Description: Computation time complexity analysis for training and testing phases of GWO-optimized SLSTM
+==================================================
+
+Values used in the figure:
+------------------------------
+training_time_seconds: 39.709357023239136
+testing_time_seconds: 0.024654150009155273
+total_time_seconds: 39.73401117324829
+training_testing_ratio: 1610.6560967826163
+n_train_samples: 3202
+n_test_samples: 808
+n_features: 30
+n_epochs: 20
+train_time_per_sample_per_epoch: 0.0006200711590137279
+test_time_per_sample: 3.0512561892518904e-05
+early_stopping_epoch: 20
+
+
+
+
+Used GWO for automated configuration of hyperparameter in a spiking-gated recurrent formulation that embeds LIF-inspired membrane dynamics into an LSTM

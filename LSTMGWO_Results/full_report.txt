@@ -1,0 +1,17 @@
+============================================================
+SLSTM HYPERPARAMETER TUNING WITH GREY WOLF OPTIMIZER
+============================================================
+
+Best GWO hyperparameters: LR = 0.009922, Weight Decay = 0.000851
+
+--- GWO-OPTIMIZED MODEL PERFORMANCE ---
+Train RMSE     : 926.755530
+Test RMSE      : 1860.238896
+Train MSE      : 858875.812500
+Test MSE       : 3460488.750000
+Train MAPE     : 48.493004
+Test MAPE      : 1.820877
+Train PBIAS    : 3.223076
+Test PBIAS     : 0.647229
+Early stopping epoch: 20
+

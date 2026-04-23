@@ -1,0 +1,14 @@
+Figure: SLSTM_error_volatility
+==================================================
+Description: Scatter plot showing relationship between prediction errors (APE) and market volatility for SLSTM
+==================================================
+
+Values used in the figure:
+------------------------------
+APE_values_sample: [2.2319798469543457, 3.8647425174713135, 2.0390796661376953, 2.32399582862854, 2.1268465518951416, 2.207273006439209, 2.3833463191986084, 2.998830795288086, 4.957154750823975, 4.0317702293396] ... (showing first 10 of 20 values)
+Volatility_values_sample: [0.34468893551907387, 0.6676383903655035, 0.9894157234901533, 0.9748990015047457, 0.9660818060604623, 0.9602156279654489, 0.9597675768406105, 0.984351295488354, 1.1175665048785652, 0.8734044542385065] ... (showing first 10 of 20 values)
+Correlation_APE_Volatility: 0.17539448347132733
+Number_of_points: 801
+Min_volatility: 0.34468893551907387
+Max_volatility: 6.6868967083841335
+Mean_volatility: 2.2421140078481177

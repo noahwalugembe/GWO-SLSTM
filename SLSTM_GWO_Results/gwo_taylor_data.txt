@@ -1,0 +1,11 @@
+Figure: gwo_taylor
+==================================================
+Description: Taylor diagram comparing standard deviation and correlation between actual and predicted prices for GWO-optimized SLSTM
+==================================================
+
+Values used in the figure:
+------------------------------
+Reference_std: 28509.20703125
+Prediction_std: 28156.849609375
+Correlation: 0.9980073002279467
+RMS_difference: 1823.00668023904

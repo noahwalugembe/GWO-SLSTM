@@ -1,0 +1,116 @@
+
+============================================================
+Reviewer Remark 27–28 Response Report (GWO-Optimized SLSTM)
+============================================================
+
+Remark 27:
+"Please provide comprehensive figure captions and discussion to support the results."
+
+Remark 28:
+"Fig. 3: How accuracy is varying with respect to the model, kindly explain."
+
+------------------------------------------------------------
+Author Response
+------------------------------------------------------------
+
+The proposed **GWO-optimized SLSTM** model uses a Grey Wolf Optimizer to automatically tune
+the learning rate and weight decay hyperparameters of a spiking LSTM architecture.
+The model captures temporal dependencies in Bitcoin price data and is trained with
+the best hyperparameters found by GWO (LR=0.009910, weight_decay=0.000787).
+
+------------------------------------------------------------
+Computation Time Complexity Analysis
+------------------------------------------------------------
+
+**Training Phase:**
+- Total training time: 39.7094 seconds
+- Training samples: 3202
+- Training epochs: 20
+- Time per sample per epoch: 0.000620 seconds
+
+**Testing Phase:**
+- Total testing time: 0.0247 seconds  
+- Testing samples: 808
+- Time per sample: 0.000031 seconds
+
+**Overall Efficiency:**
+- Total execution time: 39.7340 seconds
+- Training/Testing ratio: 1610.6561
+
+**Early Stopping:**
+- Early stopping triggered at epoch: 20
+
+------------------------------------------------------------
+Figure Descriptions and Interpretations
+------------------------------------------------------------
+
+**Fig. 1 – GWO Convergence (gwo_convergence.png)**  
+This figure shows the minimization of the validation loss (MSE) over GWO iterations.
+The curve demonstrates that the optimizer quickly finds a good region of the
+hyperparameter space, with the loss stabilizing after a few iterations.
+
+**Fig. 2 – Comprehensive Training History (training_history_comprehensive.png)**  
+Evolution of MSE, RMSE, MAPE, and PBIAS during final training with the GWO-optimized
+hyperparameters. The validation metrics closely follow the training metrics,
+indicating good generalization and no overfitting.
+
+**Fig. 3 – Bitcoin Price Prediction (bitcoin_price_prediction.png)**  
+Comparison of actual BTC–USD prices with predictions from the GWO-optimized SLSTM.
+The model captures both short-term fluctuations and long-term trends, with
+test MAPE of 1.76% and RMSE of 1840.9732.
+
+**Fig. 4 – Radar Chart (gwo_radar.png)**  
+Normalized performance metrics (RMSE, MSE, MAPE, PBIAS) showing balanced
+performance across all criteria.
+
+**Fig. 5 – Box Plot (gwo_boxplot.png)**  
+Distribution of Absolute Percentage Errors (APE). The median APE is low and
+the spread is moderate, indicating consistent prediction quality.
+
+**Fig. 6 – Taylor Diagram (gwo_taylor.png)**  
+Standard deviation and correlation of predictions relative to actual data.
+The point lies close to the reference, indicating high similarity.
+
+**Fig. 7 – Rolling Metrics (gwo_rolling.png)**  
+7-day rolling RMSE and MAPE show temporal stability of the model's performance.
+
+**Fig. 8 – Error vs Volatility (gwo_error_volatility.png)**  
+Scatter plot of APE against realized volatility. There is a slight positive
+trend, but the model remains robust even during high-volatility periods.
+
+------------------------------------------------------------
+PBIAS Analysis
+------------------------------------------------------------
+
+**Percent Bias (PBIAS) Interpretation:**
+- Train PBIAS: 1.3154% → excellent model performance
+- Test PBIAS: 0.3558% → excellent model performance
+
+The near-zero PBIAS values indicate that the GWO-optimized SLSTM does not
+systematically overestimate or underestimate Bitcoin prices.
+
+------------------------------------------------------------
+Quantitative Performance Summary
+------------------------------------------------------------
+
+================= Comprehensive Model Performance Summary =================
+Metric         Train          Test           
+-------------------------------------------------------------------------
+MSE            704744.1250    3389182.5000   
+RMSE           839.4904       1840.9732      
+MAPE (%)       28.18          1.76           
+PBIAS (%)      1.3154         0.3558         
+
+
+------------------------------------------------------------
+Conclusion
+------------------------------------------------------------
+
+The GWO-optimized SLSTM achieves excellent predictive accuracy with minimal bias.
+The hyperparameter tuning via Grey Wolf Optimizer successfully identifies
+a configuration that balances learning speed and regularization, leading to
+robust performance on unseen test data.
+
+============================================================
+End of Report
+============================================================

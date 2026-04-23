@@ -1,0 +1,20 @@
+
+Documentation: Data Handling, Splitting, and Rolling-Origin Evaluation
+
+1. Missing days: 0 (0.0000%) handled by linear interpolation.
+2. Chronological split: 80% training / 20% testing (no leakage).
+3. Rolling-origin protocol: expanding training windows with fixed 20% test slices,
+   emulating real deployment and regime shifts.
+4. Frequency: D
+5. Regime markers: Bull (>+1%), Bear (<-1%), Neutral.
+6. Output files (all inside folder 'dataanlysis/'):
+   - BTC_processed.csv
+   - Table1.txt
+   - missing_day_handling_doc.txt
+   - Rolling_Origin_Results.csv
+   - rolling_windows_table.tex
+   - three_rolling_windows.csv
+   - Regime_Distribution.png
+   - Rolling_Origin_Trend.png   (combined: price with shaded windows + rolling statistics)
+   - rolling_windows_timeline.png   (Gantt chart of training/test periods for R1,R2,R3)
+   - appendix.tex               <-- Full LaTeX appendix section (Tables A1, A2, Figures A1, A2, A3, A4)

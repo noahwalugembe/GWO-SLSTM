@@ -1,0 +1,28 @@
+GWO-Optimized SLSTM Model Performance Metrics
+=======================================================
+
+Best GWO hyperparameters: LR=0.009910, Weight Decay=0.000787
+
+Train RMSE: 839.490396
+Test RMSE: 1840.973248
+Train MSE: 704744.125000
+Test MSE: 3389182.500000
+Train MAPE: 28.1798%
+Test MAPE: 1.7619%
+Train PBIAS: 1.3154%
+Test PBIAS: 0.3558%
+
+==================================================
+COMPUTATION TIME COMPLEXITY ANALYSIS
+==================================================
+Training Phase Time: 39.7094 seconds
+Testing Phase Time: 0.0247 seconds
+Total Execution Time: 39.7340 seconds
+Training/Testing Ratio: 1610.6561
+Training samples: 3202
+Testing samples: 808
+Features per sample: 30
+Training epochs: 20
+Training time per sample per epoch: 0.000620 seconds
+Testing time per sample: 0.000031 seconds
+Early stopping triggered at epoch: 20

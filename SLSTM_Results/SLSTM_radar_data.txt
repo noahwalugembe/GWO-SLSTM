@@ -1,0 +1,15 @@
+Figure: SLSTM_radar
+==================================================
+Description: Radar chart showing normalized performance metrics (RMSE, MSE, MAPE, PBIAS) for SLSTM model
+==================================================
+
+Values used in the figure:
+------------------------------
+RMSE: 3501.4765456875475
+MSE: 12260338.0
+MAPE: 3.8641314953565598
+PBIAS: 1.133981067687273
+Normalized_RMSE: 0.9997144061977992
+Normalized_MSE: 0.0
+Normalized_MAPE: 0.9999996848266748
+Normalized_PBIAS: 0.9999999075081725

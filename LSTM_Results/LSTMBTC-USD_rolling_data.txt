@@ -1,0 +1,14 @@
+Figure: LSTMBTC-USD_rolling.png
+==================================================
+Description: 7-day rolling RMSE and MAPE metrics showing temporal performance consistency
+==================================================
+
+Values used in the figure:
+------------------------------
+Rolling_RMSE_series_sample: [638.6252009701508, 549.411154341558, 459.9506954176558, 420.2396466961583, 349.66588550724356, 322.7948931064352, 313.22984376164686, 294.4760429131166, 261.99442940290083, 329.5585751259948] ... (showing first 10 of 20 values)
+Rolling_MAPE_series_sample: [2.0752571143957477, 1.7951018676676593, 1.4697410877190846, 1.3450286492620094, 1.1464537835683566, 1.071115711069626, 1.0420892311413532, 0.9825663297178776, 0.841220695127924, 1.0347836702771727] ... (showing first 10 of 20 values)
+Average_Rolling_RMSE: 3365.5523376518654
+Average_Rolling_MAPE: 4.395297419621416
+Max_Rolling_RMSE: 11882.009726558568
+Max_Rolling_MAPE: 15.003128634710627
+Window_size: 7

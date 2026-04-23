@@ -1,0 +1,29 @@
+Model: LSTM with default Adam (no GWO)
+Train RMSE: 2103.0766801746004
+Test RMSE: 4030.097355827562
+Train MSE: 4422931.522694218
+Test MSE: 16241684.697448306
+Train MAPE: 77.7930277693634
+Test MAPE: 4.397449330997513
+Train PBIAS: -2.641078896199938
+Test PBIAS: 0.03424984955814757
+Early stopping triggered: True
+Best validation loss: 0.001047
+Actual epochs trained: 5
+
+==================================================
+COMPUTATION TIME COMPLEXITY ANALYSIS
+==================================================
+Training Phase Time: 7.7548 seconds
+Testing Phase Time: 0.3712 seconds
+Total Execution Time: 8.1260 seconds
+Training/Testing Ratio: 20.8906
+Training samples: 3202
+Testing samples: 808
+Features per sample: 30
+Training epochs: 5
+Training time per sample per epoch: 0.000484 seconds
+Testing time per sample: 0.000459 seconds
+
+Fig. 5: Taylor diagram showing std & correlation comparison.
+Std prediction: 28153.70, Std reference: 28509.21, Correlation: 0.99

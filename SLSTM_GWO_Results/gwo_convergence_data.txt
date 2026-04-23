@@ -1,0 +1,13 @@
+Figure: gwo_convergence
+==================================================
+Description: Convergence curve of Grey Wolf Optimizer showing best validation loss (MSE) over iterations
+==================================================
+
+Values used in the figure:
+------------------------------
+Convergence_curve: [0.0002943926023223097, 0.0002943926023223097, 0.0002943926023223097, 0.0002943926023223097, 0.0002943926023223097] ... (showing first 10 of 5 values)
+Best_loss: 0.0002943926023223097
+Best_LR: 0.00990953557120115
+Best_weight_decay: 0.0007869342818264051
+Iterations: 5
+Population_size: 5

@@ -1,0 +1,15 @@
+
+Table 1: Descriptive Statistics, ADF and Ljung–Box Tests
+
+Missing day handling:
+Missing entries: 0 (0.0000%) interpolated linearly.
+
+
+Train Set (80% chronological split):
+{'mean': 13692.552990148562, 'std': 16015.914430620724, 'min': 178.10299682617188, '25%': 765.7869873046875, '50%': 7710.050048828125, '75%': 20367.6787109375, 'max': 67566.828125, 'skewness': 1.377356995069732, 'kurtosis': 0.9427099350648072, 'ADF_stat': -1.5415104957264483, 'ADF_pvalue': 0.5128859654748329, 'LjungBox_stat': 31867.37520781411, 'LjungBox_pvalue': 0.0}
+
+Test Set (20% chronological split):
+{'mean': 72108.6402334081, 'std': 28526.864307169053, 'min': 25162.654296875, '25%': 48163.2578125, '50%': 67598.984375, '75%': 97495.45703125, 'max': 124752.53125, 'skewness': 0.01712934122097031, 'kurtosis': -1.1675815255274675, 'ADF_stat': -0.533383847949226, 'ADF_pvalue': 0.8853355894311266, 'LjungBox_stat': 7711.736482760122, 'LjungBox_pvalue': 0.0}
+
+Rolling-Origin Evaluation Summary (see 'Rolling_Origin_Results.csv'):
+Expanding windows with fixed 20% test slices.
